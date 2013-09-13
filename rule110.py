@@ -63,9 +63,10 @@ class rule110:
         line.append(rules[point])
       #concat line and append to output
       output.append(''.join(line))
-      #update the state
+      #update the current state
       state = output[-1]
-
+    
+    #generate html page
     return '''
 <html>
   <head> <title>Rule 100 | %d iterations</title> 
@@ -82,13 +83,8 @@ class rule110:
            '''%(iterations,'\n'.join(output))
 
 if __name__ == "__main__": 
+  # fcgi configuration
+  # remove the next line if fast-cgi is not used
+  web.wsgi.runwsgi = lambda func, addr=None: web.wsgi.runfcgi(func, addr)
   app = web.application(urls, globals())
   app.run()        
-
-
-      
-      
-      
-
-
-
