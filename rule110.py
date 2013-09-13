@@ -26,6 +26,7 @@ rules = {
 # Customizations
 # uncomment this section to change
 # the symbols to be printed 
+'''
 z = ' ' #zero symbol
 o = '#' #one symbol
 
@@ -39,6 +40,7 @@ rules = {
   '%s%s%s'%(o,o,z):o,
   '%s%s%s'%(o,o,o):z
         }
+'''
 
 class rule110:
   
@@ -57,9 +59,9 @@ class rule110:
       line = []
       #for each character
       for i in xrange(iterations+1):
-        #get the triplet from neighbor cells
-        point = ''.join([state[i-1] if i>0 else z,state[i],state[i+1] if i<iterations else z])
-        #add to the line
+        #get the triplet from neighbor cells. Use zero if not applicable.
+        point = ''.join([state[i-1] if i>0 else z, state[i], state[i+1] if i<iterations else z])
+        #add next state to the line according to the rules
         line.append(rules[point])
       #concat line and append to output
       output.append(''.join(line))
@@ -84,7 +86,7 @@ class rule110:
 
 if __name__ == "__main__": 
   # fcgi configuration
-  # remove the next line if fast-cgi is not used
-  web.wsgi.runwsgi = lambda func, addr=None: web.wsgi.runfcgi(func, addr)
+  # uncomment the next line if you use fast-cgi
+  #web.wsgi.runwsgi = lambda func, addr=None: web.wsgi.runfcgi(func, addr)
   app = web.application(urls, globals())
   app.run()        
