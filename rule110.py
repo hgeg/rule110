@@ -9,26 +9,11 @@ urls = (
   '/','rule110',
        )
 
+# Customization Options:
+# change the characters for better
+# output styles eg. '#' and ' '
 z = '0' #zero symbol
 o = '1' #one symbol
-
-rules = {
-  '000':'0',
-  '001':'1',
-  '010':'1',
-  '011':'1',
-  '100':'0',
-  '101':'1',
-  '110':'1',
-  '111':'0'
-        }
-
-# Customizations
-# uncomment this section to change
-# the symbols to be printed 
-'''
-z = ' ' #zero symbol
-o = '#' #one symbol
 
 rules = {
   '%s%s%s'%(z,z,z):z,
@@ -40,7 +25,6 @@ rules = {
   '%s%s%s'%(o,o,z):o,
   '%s%s%s'%(o,o,o):z
         }
-'''
 
 class rule110:
   
@@ -86,7 +70,7 @@ class rule110:
 
 if __name__ == "__main__": 
   # fcgi configuration
-  # uncomment the next line if you use fast-cgi
+  # uncomment the next line if you use a fcgi solution
   #web.wsgi.runwsgi = lambda func, addr=None: web.wsgi.runfcgi(func, addr)
   app = web.application(urls, globals())
   app.run()        
