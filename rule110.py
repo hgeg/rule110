@@ -43,7 +43,7 @@ class rule110:
       line = []
       #for each character
       for i in xrange(iterations+1):
-        #get the triplet from neighbor cells. Use zero if not applicable.
+        #get the triplet using neighbor cells. Use zero if not applicable.
         point = ''.join([state[i-1] if i>0 else z, state[i], state[i+1] if i<iterations else z])
         #add next state to the line according to the rules
         line.append(rules[point])
@@ -55,7 +55,7 @@ class rule110:
     #generate html page
     return '''
 <html>
-  <head> <title>Rule 100 | %d iterations</title> 
+  <head> <title>Rule 110 | %d iterations</title> 
          <!--Pretty printing-->
          <style>
            body { line-height:0.5; }
@@ -70,7 +70,7 @@ class rule110:
 
 if __name__ == "__main__": 
   # fcgi configuration
-  # uncomment the next line if you use a fcgi solution
+  # uncomment the next line if you use a fcgi solution like spawn-fcgi
   #web.wsgi.runwsgi = lambda func, addr=None: web.wsgi.runfcgi(func, addr)
   app = web.application(urls, globals())
   app.run()        
